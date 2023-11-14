@@ -33,13 +33,24 @@ type cases = [
 
 
 // ============= Your Code Here =============
-type ToPrimitive<T> = {
-  [P in keyof T]:
-    T[P] extends string
+type ToPrimitive<T> =
+  T extends number
+    ? number
+    : T extends string
       ? string
-      : T[P] extends number
-        ? number
-        : T[P] extends boolean
-          ? boolean
-          : ToPrimitive<T[P]>
-}
+      : T extends boolean
+        ? boolean
+        : T extends bigint
+          ? bigint
+          : T extends symbol
+            ? symbol
+            : T extends null
+              ? null
+              : T extends undefined
+                ? undefined
+                : T extends () => any
+                  ? Function
+                  : T extends object
+                    ? { [P in keyof T]: ToPrimitive<T[P]> }
+                    : never
+;

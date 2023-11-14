@@ -28,17 +28,17 @@ type cases = [
 type NumberRange<
   L extends number,
   H extends number,
-  Count extends 'placeholder'[] = [],
+  Count extends '🇺🇦'[] = [],
   Acc = never
 > =
   Count['length'] extends L
     ? Count['length'] extends H
       ? Acc | Count['length']
       : NumberRange<
-        [...Count, 'placeholder']['length'],
+        [...Count, '🇺🇦']['length'],
         H,
-        [...Count, 'placeholder'],
+        [...Count, '🇺🇦'],
         Acc | Count['length']
       >
-    : NumberRange<L, H, [...Count, 'placeholder'], Acc>
+    : NumberRange<L, H, [...Count, '🇺🇦'], Acc>
 ;

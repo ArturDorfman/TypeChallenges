@@ -25,9 +25,9 @@ type Fill<
   Acc extends unknown[] = []
 > = 
   T extends [infer Head, ...infer Tail]
-    ? [...Acc, 'placeholder'][Start] extends undefined
+    ? [...Acc, '🇺🇦'][Start] extends undefined
       ? Fill<Tail, N, Start, End, [...Acc, Head]>
-      : [...Acc, 'placeholder'][End] extends undefined
+      : [...Acc, '🇺🇦'][End] extends undefined
         ? Fill<Tail, N, Start, End, [...Acc, N]>
         : Fill<Tail, N, Start, End, [...Acc, Head]>
     : Acc
